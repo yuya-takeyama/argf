@@ -5,11 +5,17 @@ import (
 	"os"
 )
 
+// Argf returns io.Reader from STDIN or files from command-line arguments.
+//
+// If the files are multiple, they are concatinated as one io.Reader.
 func Argf() (io.Reader, error) {
-	return ArgfFrom(os.Args[1:])
+	return From(os.Args[1:])
 }
 
-func ArgfFrom(filenames []string) (io.Reader, error) {
+// From returns io.Reader from STDIN or files from function argument.
+func From(filenames []string) (io.Reader, error) {
+	var reader io.Reader
+
 	filelen := len(filenames)
 
 	if filelen > 0 {
@@ -24,8 +30,10 @@ func ArgfFrom(filenames []string) (io.Reader, error) {
 			files[i] = file
 		}
 
-		return io.MultiReader(files...), nil
+		reader = io.MultiReader(files...)
 	} else {
-		return os.Stdin, nil
+		reader = os.Stdin
 	}
+
+	return reader, nil
 }

@@ -26,7 +26,7 @@ func main() {
 	var displayHelp = flag.Bool("h", false, "display help")
 	flag.Parse()
 
-	reader, err := argf.ArgfFrom(flag.Args())
+	reader, err := argf.From(flag.Args())
 }
 ```
 

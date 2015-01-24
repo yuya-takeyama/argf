@@ -22,7 +22,7 @@ func TestArgf(t *testing.T) {
 	}
 }
 
-func TestArgfFromWithOneFile(t *testing.T) {
+func TestWithOneFile(t *testing.T) {
 	cmd := exec.Command("go", "run", "testcmd/main.go", "testcmd/file1")
 	stdout := new(bytes.Buffer)
 	cmd.Stdout = stdout
@@ -37,7 +37,7 @@ func TestArgfFromWithOneFile(t *testing.T) {
 	}
 }
 
-func TestArgfFromWithTwoFiles(t *testing.T) {
+func TestWithTwoFiles(t *testing.T) {
 	cmd := exec.Command("go", "run", "testcmd/main.go", "testcmd/file1", "testcmd/file2")
 	stdout := new(bytes.Buffer)
 	cmd.Stdout = stdout
@@ -52,7 +52,7 @@ func TestArgfFromWithTwoFiles(t *testing.T) {
 	}
 }
 
-func TestArgfFromWithTwoFilesAndStdin(t *testing.T) {
+func TestWithTwoFilesAndStdin(t *testing.T) {
 	cmd := exec.Command("go", "run", "testcmd/main.go", "testcmd/file1", "testcmd/file2")
 	cmd.Stdin = bytes.NewBufferString("this will be not read\n")
 	stdout := new(bytes.Buffer)
