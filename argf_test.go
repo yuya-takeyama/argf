@@ -54,7 +54,7 @@ func TestWithTwoFiles(t *testing.T) {
 
 func TestWithTwoFilesAndStdin(t *testing.T) {
 	cmd := exec.Command("go", "run", "testcmd/main.go", "testcmd/file1", "testcmd/file2")
-	cmd.Stdin = bytes.NewBufferString("this will be not read\n")
+	cmd.Stdin = bytes.NewBufferString("this won't be read\n")
 	stdout := new(bytes.Buffer)
 	cmd.Stdout = stdout
 
